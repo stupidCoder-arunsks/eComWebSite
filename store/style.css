@@ -5,9 +5,7 @@
     margin: 0;
     padding: 0;
 }
-/* body{
-    height:100vh;
-} */
+
 header {
     text-align: center;
     margin:0;
@@ -17,14 +15,12 @@ header {
     color:white;
 }
 
-#cart{
-    position: fixed;
-    height: 95%;
-}
+
 header h1{
     padding:40px;
     font-size:100px;
 }
+
 header ul{
     display:flex;
     padding:10px;
@@ -39,9 +35,11 @@ header ul{
     width: 100%;
     z-index: 1;
 }
+
 header li{
     margin:0px 40px;
 }
+
 header li a{
     text-decoration: none;
     color:white;
@@ -53,19 +51,23 @@ section h2{
     padding:20px;
     font-size:30px;
 }
+
 .container{
     max-width:900px;
     margin:0 auto;
     padding:20px 30px;
 }
+
 #music-content{
     display:flex;
     flex-wrap: wrap;
     justify-content:space-around;
 }
+
 #music-content div{
     margin:30px;
 }
+
 #music-content div h3{
     display: block;
     width: 100%;
@@ -74,12 +76,14 @@ section h2{
     color: #333;
     margin-bottom: 15px;
 }
+
 #music-content .prod-details{
     display: flex;
     margin: 8px;
     align-items: center;
     justify-content: space-between;
 }
+
 #music-content .shop-item-button{
     cursor:pointer;
     padding:8px;
@@ -90,17 +94,21 @@ section h2{
     border-radius: 4%;
     background: #56CCF2;
 }
+
 #music-content .shop-item-button:hover, #merch-content .shop-item-button:hover{
     background: #0eabdf;
 }
+
 #merch-content{
     display:flex;
     flex-wrap: wrap;
     justify-content:space-around;
 }
+
 #merch-content div{
     margin:30px;
 }
+
 #merch-content div h3{
     display: block;
     width: 100%;
@@ -109,12 +117,14 @@ section h2{
     color: #333;
     margin-bottom: 15px;
 }
+
 #merch-content .prod-details{
     display:flex;
     margin:8px;
     align-items:center;
     justify-content: space-between;
 }
+
 #merch-content .shop-item-button{
     cursor:pointer;
     padding:8px;
@@ -125,28 +135,43 @@ section h2{
     border-radius: 4%;
     background: #56CCF2;
 }
+
+.cart-holder{
+    border:2px solid #56CCF2;
+    border-radius: 7px;;
+    padding:2px 10px;
+    position: absolute;
+    right: 2%;
+}
+
 .cart-row{
     font-size:18px;
     display:flex;
 }
+
 .cart-header{
     font-size:1.2rem;
     font-weight: bold;
 }
+
 .cart-item{
     width:45%;
 }
+
 .cart-img{
     width:80px;
     border-radius:8%;
     margin-right:20px;
 }
+
 .cart-price{
     width:20%;
 }
+
 .cart-quantity{
     width:35%;
 }
+
 .cart-column{
     display: flex;
     align-items: center;
@@ -155,6 +180,7 @@ section h2{
     padding-bottom: 10px;
     margin-top: 10px;
 }
+
 .cart-quantity input{
     width:40px;
     height:30px;
@@ -164,6 +190,7 @@ section h2{
     text-align:center;
     margin-right:20px;
 }
+
 .cart-quantity button{
     color:white;
     font-weight: bold;
@@ -175,15 +202,18 @@ section h2{
     outline:none;
     padding: 0px 7px;
 }
+
 .cart-quantity button:hover{
     background: rgb(218, 37, 37);;
 }
+
 .cart-total{
     display:flex;
     flex-direction: row-reverse;
     font-size:1.2rem;
     margin:20px;
 }
+
 .cart-total .total-title{
     margin-right:10px;
     font-size:1.5rem;
@@ -204,15 +234,18 @@ section h2{
     padding:12px;
     cursor: pointer;
 }
+
 .purchase-btn:hover{
     background-color:#18acdd;
 }
+
 footer{
     display:flex;
     margin-top:40px;
     padding:20px;
     background: #56CCF2;
 }
+
 footer .footer-title{
     text-align: center;
     color:white;
@@ -221,16 +254,19 @@ footer .footer-title{
     font-weight:bold;
     margin:0 auto;
 }
+
 footer .footer-icons{
     width:50%;
     display:flex;
     align-items:center;
     justify-content: space-around;
 }
+
 .footer-icons ul{
     list-style-type: none;
     display:flex;
 }
+
 .footer-icons li{
     padding:10px;
     margin:0px 20px;
@@ -238,6 +274,7 @@ footer .footer-icons{
 .footer-icons li:hover{
     background:rgb(17, 206, 206);
 }
+
 .footer-icons img{
     width:30px;
 }
@@ -274,23 +311,19 @@ footer .footer-icons{
     transition: ease-in 0.5s;
     filter: brightness(100%);
 }
+
 .prod-images:hover{
     transform: scale(1.5);
     filter: brightness(130%);
 }
+
 header ul a{
     color:white;
     text-decoration:none;
     cursor: pointer;
 }
 
-.cart-holder{
-    border:2px solid #56CCF2;
-    border-radius: 7px;;
-    padding:2px 10px;
-    position: absolute;
-    right: 2%;
-}
+
 .cart-number{
     position:absolute;
     color:#56CCF2;
@@ -324,12 +357,14 @@ header ul a{
     margin:auto;
     cursor:pointer;
 }
+
 .cart-bottom{
     text-decoration: none;
     color:#56CCF2;
     font-size: 16px;
     font-weight:700;
 }
+
 .cancel{
     position:absolute;
     cursor:pointer;
@@ -344,3 +379,83 @@ header ul a{
     border-radius:7px;
     padding:5px;
 }
+
+/* About page */
+
+#about{
+    /* background-color: red; */
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 22px;
+}
+
+#about img{
+    float: left;
+    width: 200px;
+    margin: 20px 50px;
+    border-radius: 50%;
+    height: 200px;
+}
+
+#about p{
+    font-size: 17px;
+    margin:20px;
+    color: #777;
+}
+
+/* home page */
+
+header .latest-album{
+    display:block;
+    border:1px solid #56CCF2;
+    padding:15px 30px;
+    font-size:23px;
+    font-weight: 200;
+    margin:10px auto;
+    background: inherit;
+    cursor: pointer;
+    color:white;
+}
+header .play-btn{
+    cursor: pointer;
+    display:block;
+    border:2px solid #56CCF2;
+    border-radius:50%;
+    padding:20px;
+    font-size:30px;
+    font-weight: 200;
+    margin:20px auto;
+    background: inherit;
+    color:#56CCF2;
+}
+
+#tours .tour-item{
+    display:flex;
+    border-bottom:1px solid black;
+    padding:10px;
+}
+
+ #tours .tour-item .tour-date{
+    width:12%;
+} 
+
+#tours .tour-item .tour-place{
+    width:25%;
+    color:#777;
+}
+
+#tours .tour-item .tour-spec-place{
+    width:53%;
+    color:#777;
+}
+
+#tours .tour-item .buy-btn{
+    width:20%;
+    background: #56CCF2;
+    color:white;
+    border:none;
+    padding:7px;
+    border-radius:5px;
+    font-weight:700;
+    font-family: sans-serif;
+} 
