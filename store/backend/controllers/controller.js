@@ -62,6 +62,14 @@ exports.addProduct = (req, res, next) => {
 
 exports.getCart = (req, res, next) => {
 
+    req.user.getCart()
+        .then(cart => {
+            return cart.getProducts().then(products => {
+                res.json(products);
+            });
+        })
+        .catch(err => console.log(err));
+
     // console.log("inside getCart controller...");
 
     // Cart.findAll().then((cartItems => {
