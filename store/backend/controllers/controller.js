@@ -7,37 +7,82 @@ const { Op } = require("sequelize");
 
 exports.getProduct = (req, res, next) => {
 
+    let page = !req.query.page ? 1 : parseInt(req.query.page);
 
-    let albumProduct;
-    let merchProduct;
-    console.log("inside getProducts controller...");
+    // console.log('page >>>> ' , page);
 
-    Product.findAll({
-        where:
-        {
-            id: {
-                [Op.lte]: 4,
-            }
+    let totalItems;
+    let start = (page * 2) - 1;
+    let end = page * 2;
 
-        }
-    })
-        .then(products => {
-            albumProduct = products;
-            Product.findAll({
-                where:
-                {
-                    id: {
-                        [Op.gt]: 4,
-                    }
-
+    // console.log("inside getProducts controller...");
+    Product.findAll().then(products => {
+        totalItems = products.length;
+    }).then(() => {
+        Product.findAll({
+            where: {
+                id: {
+                    [Op.between]: [start, end],
                 }
-
-            }).then(products => {
-                merchProduct = products;
-                res.json({ "albumProducts": albumProduct, "merchProducts": merchProduct })
-            })
+            }
+        }).then(products => {
+            console.log('end total items >>> ', end, totalItems);
+            // console.log('products length >>> ',products.length);
+            res.json({
+                "products": products, "pagination": {
+                    currentPage: page,
+                    nextPage: page + 1,
+                    previousPage: page - 1,
+                    hasPreviousPage: page > 1,
+                    hasNextPage: end < totalItems,
+                }
+            });
+        }).catch(err => {
+            console.log(err);
         })
-        .catch(err => console.log(err));
+    })
+
+
+    // Product.findAll()
+    // .countDocuments()
+    // .then(numProducts => {
+    // console.log("numOfProducts >>> " , numProducts);
+    // totalItems = numProducts;
+    //  return Product.findAll()
+    //  .then(products => {
+    //      res.json(products);
+    //  });
+    // })
+    // .catch(err => {
+    //     console.log(err);
+    // })
+
+    // Product.findAll({
+    //     where:
+    //     {
+    //         id: {
+    //             [Op.lte]: 4,
+    //         }
+
+    //     }
+    // })
+    //     .then(products => {
+    //         albumProduct = products;
+    //         Product.findAll({
+    //             where:
+    //             {
+    //                 id: {
+    //                     [Op.gt]: 4,
+    //                 }
+
+    //             }
+
+    //         }).then(products => {
+    //             merchProduct = products;
+    //             res.json({ "albumProducts": albumProduct, "merchProducts": merchProduct })
+    //         })
+    //     })
+    //     .catch(err => console.log(err));
 
     // res.json(product);
 }
