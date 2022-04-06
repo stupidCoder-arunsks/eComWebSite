@@ -7,6 +7,7 @@ routes.get('/getProducts', controller.getProduct);
 routes.post('/addProduct', controller.addProduct);
 routes.get('/getCart', controller.getCart);
 routes.post('/addCart', controller.addCart);
+routes.get('/purchase',controller.postOrder);
 
 
 module.exports = routes;

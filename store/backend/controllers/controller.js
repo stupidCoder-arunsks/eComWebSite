@@ -42,49 +42,6 @@ exports.getProduct = (req, res, next) => {
         })
     })
 
-
-    // Product.findAll()
-    // .countDocuments()
-    // .then(numProducts => {
-    // console.log("numOfProducts >>> " , numProducts);
-    // totalItems = numProducts;
-    //  return Product.findAll()
-    //  .then(products => {
-    //      res.json(products);
-    //  });
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    // })
-
-    // Product.findAll({
-    //     where:
-    //     {
-    //         id: {
-    //             [Op.lte]: 4,
-    //         }
-
-    //     }
-    // })
-    //     .then(products => {
-    //         albumProduct = products;
-    //         Product.findAll({
-    //             where:
-    //             {
-    //                 id: {
-    //                     [Op.gt]: 4,
-    //                 }
-
-    //             }
-
-    //         }).then(products => {
-    //             merchProduct = products;
-    //             res.json({ "albumProducts": albumProduct, "merchProducts": merchProduct })
-    //         })
-    //     })
-    //     .catch(err => console.log(err));
-
-    // res.json(product);
 }
 
 exports.addProduct = (req, res, next) => {
@@ -115,14 +72,7 @@ exports.getCart = (req, res, next) => {
         })
         .catch(err => console.log(err));
 
-    // console.log("inside getCart controller...");
 
-    // Cart.findAll().then((cartItems => {
-    //     // console.log('cartItemFromDB >>> ',cartItems);
-    //     res.json(cartItems);
-    // })).catch(err => {
-    //     console.log(err);
-    // });
 }
 
 exports.addCart = (req, res, next) => {
@@ -161,18 +111,31 @@ exports.addCart = (req, res, next) => {
             res.sendStatus(500);
         });
 
-    //     console.log('backend add cart function >> ', req.params.productId);
-    //     // console.log(productId);
-    //     // Cart.create({
-    //     //     productId: req.body.id,
-    //     //     name: req.body.name,
-    //     //     imgUrl: req.body.imgUrl,
-    //     //     price: req.body.price,
-    //     //     totalCartPrice: req.body.totalCartPrice
-    //     // }).then(
-    //     //     res.send('Product created sucessfully')
-    //     // );
-    //     // console.log('Incoming data from cart >> ', req.body);
 }
 
+exports.postOrder = async (req, res, next) => {
+    try {
 
+        const cart = await req.user.getCart();
+        const products = await cart.getProducts();
+        const order = await req.user.createOrder();
+
+        // order.addProducts(products);
+
+        order.addProducts(products.map(product => {
+            // console.log('product OrderItem >>> ' , product.orderItem);
+            // console.log('product >>> ' , product);
+
+            product.orderItem = {
+                quantity: product.cartItem.quantity
+            }
+            return product;
+        }))
+
+        await cart.setProducts(null);
+        res.status(200).json({ orderId: order.id, message: "Success!" })
+    } catch (err) {
+        res.status(500).json({ err: err });
+    }
+
+}
