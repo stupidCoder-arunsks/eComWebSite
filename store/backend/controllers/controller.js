@@ -10,13 +10,10 @@ exports.getProduct = (req, res, next) => {
 
     let page = !req.query.page ? 1 : parseInt(req.query.page);
 
-    // console.log('page >>>> ' , page);
-
     let totalItems;
     let start = (page * 2) - 1;
     let end = page * 2;
 
-    // console.log("inside getProducts controller...");
     Product.findAll().then(products => {
         totalItems = products.length;
     }).then(() => {
@@ -28,7 +25,6 @@ exports.getProduct = (req, res, next) => {
             }
         }).then(products => {
             console.log('end total items >>> ', end, totalItems);
-            // console.log('products length >>> ',products.length);
             res.json({
                 "products": products, "pagination": {
                     currentPage: page,
@@ -51,7 +47,6 @@ exports.addProduct = (req, res, next) => {
     const imageUrl = req.body.imageUrl;
     const price = req.body.price;
 
-    // // console.log("inside addProduct controller...");
     req.user.createProduct({
         title: title,
         imageUrl: imageUrl,
@@ -79,15 +74,12 @@ exports.getCart = (req, res, next) => {
 exports.addCart = (req, res, next) => {
     console.log("inside addCart controller...");
 
-    // console.log('req body of addCart >> ' , req.body);
-
     const prodId = req.body.productId;
     let fetchedCart;
     let newQuantity = 1;
 
     req.user.getCart()
         .then(cart => {
-            // console.log('cart >> ' , cart);
             fetchedCart = cart;
             return cart.getProducts({ where: { id: prodId } });
         }).then(products => {
@@ -122,8 +114,6 @@ exports.postOrder = async (req, res, next) => {
         const order = await req.user.createOrder();
 
         order.addProducts(products.map(product => {
-            // console.log('product OrderItem >>> ' , product.orderItem);
-            // console.log('product >>> ' , product);
 
             product.orderItem = {
                 quantity: product.cartItem.quantity
