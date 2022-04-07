@@ -16,6 +16,7 @@
                 <li><a href="./home.html">HOME</a></li>
                 <li><a href="./index.html">STORE</a></li>
                 <li><a href="./about.html">ABOUT</a></li>
+                <li><a href="./orderHistory.html">ORDERS</a></li>
                 <a href="#cart" class="cart-holder">cart<span class='cart-number'>0</span></a>
             </ul>
             <h1>The Generics</h1>
@@ -23,78 +24,15 @@
         <section id="music" class="container">
             <h2>MUSIC</h2>
             <div id="music-content">
-                <div id="album1">
-                    <h3>Album1</h3>
-                    <div class="image-container">
-                        <img class="prod-images" src="https://prasadyash2411.github.io/ecom-website/img/Album%201.png"
-                            alt="">
-                    </div>
-                    <div class="prod-details">
-                        <span>$<span>12.99</span></span>
-                        <button class="shop-item-button" type="button">ADD TO CART</button>
-                    </div>
-                </div>
-                <div id="album2">
-                    <h3>Album2</h3>
-                    <div class="image-container">
-                        <img class="prod-images" src="https://prasadyash2411.github.io/ecom-website/img/Album%202.png"
-                            alt="">
-                    </div>
-                    <div class="prod-details">
-                        <span>$<span>14.99</span></span>
-                        <button class="shop-item-button" type="button">ADD TO CART</button>
-                    </div>
-                </div>
-                <div id="album3">
-                    <h3>Album3</h3>
-                    <div class="image-container">
-                        <img class="prod-images" src="https://prasadyash2411.github.io/ecom-website/img/Album%203.png"
-                            alt="">
-                    </div>
-                    <div class="prod-details">
-                        <span>$<span>9.99</span></span>
-                        <button class="shop-item-button" type="button">ADD TO CART</button>
-                    </div>
-                </div>
-                <div id="album4">
-                    <h3>Album4</h3>
-                    <div class="image-container">
-                        <img class="prod-images" src="https://prasadyash2411.github.io/ecom-website/img/Album%204.png"
-                            alt="">
-                    </div>
-                    <div class="prod-details">
-                        <span>$<span>19.99</span></span>
-                        <button class="shop-item-button" type="button">ADD TO CART</button>
-                    </div>
-                </div>
+
             </div>
+
+            <section id="pagination">
+
+            </section>
+
         </section>
-        <section id="merch" class="container">
-            <h2>MERCH</h2>
-            <div id="merch-content">
-                <div id="t-shirt">
-                    <h3>T-Shirt</h3>
-                    <div class="image-container">
-                        <img class="prod-images" src="https://prasadyash2411.github.io/ecom-website/img/Shirt.png"
-                            alt="">
-                    </div>
-                    <div class="prod-details">
-                        <span>$<span>19.99</span></span>
-                        <button class="shop-item-button" type="button">ADD TO CART</button>
-                    </div>
-                </div>
-                <div id="coffee-cup">
-                    <h3>Coffee-Cup</h3>
-                    <div class="image-container">
-                        <img class="prod-images" src="https://prasadyash2411.github.io/ecom-website/img/Cofee.png"
-                            alt="">
-                    </div>
-                    <div class="prod-details">
-                        <span>$<span>6.99</span></span>
-                        <button class="shop-item-button" type="button">ADD TO CART</button>
-                    </div>
-                </div>
-            </div>
+
         </section>
         <section id="cart" , class="container">
             <h2>CART</h2>
@@ -105,18 +43,7 @@
                 <span class="cart-quantity cart-column">QUANTITY</span>
             </div>
             <div class="cart-items">
-                <!-- <div class="cart-row"> -->
-                <!-- <span class="cart-item cart-column">
-                        <img class="cart-img" src="" alt="">
-                        <span>T-Shirt</span>
-                    </span>
-                    <span class="cart-price cart-column">$19.99</span>
-                    <span class="cart-quantity cart-column">
-                        <input type="text">
-                        <button>REMOVE</button>
-                    </span>
-                    </span>
-                   </div> -->
+
             </div>
 
             <div class="cart-total">
@@ -127,7 +54,7 @@
             </div>
             <button class="purchase-btn" type="button">PURCHASE</button>
         </section>
-        <button class="cart-btn-bottom"> <a href="#cart" class="cart-bottom">See the cart</a></button>
+        <!-- <button class="cart-btn-bottom"> <a href="#cart" class="cart-bottom">See the cart</a></button> -->
     </div>
     <!-- For Toggle notification -->
     <div id="container"></div>
@@ -148,6 +75,7 @@
         </div>
     </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
 </body>
 
 </html>
