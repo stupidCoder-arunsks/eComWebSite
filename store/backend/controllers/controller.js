@@ -2,6 +2,7 @@ const Cart = require('../models/cart');
 const Product = require('../models/product');
 const User = require('../models/user');
 const CartItem = require('../models/cart-Item');
+const Order = require('../models/order');
 const { Op } = require("sequelize");
 
 
@@ -120,8 +121,6 @@ exports.postOrder = async (req, res, next) => {
         const products = await cart.getProducts();
         const order = await req.user.createOrder();
 
-        // order.addProducts(products);
-
         order.addProducts(products.map(product => {
             // console.log('product OrderItem >>> ' , product.orderItem);
             // console.log('product >>> ' , product);
@@ -139,3 +138,29 @@ exports.postOrder = async (req, res, next) => {
     }
 
 }
+
+
+exports.getOrders = async (req, res, next) => {
+    try {
+        const result = [];
+        const orders = await req.user.getOrders();
+        await Promise.all(orders.map(async (order) => {
+            const obj = {};
+            obj.orderId = order.id;
+            const o = await Order.findByPk(order.id);
+            const products = await o.getProducts();
+            const p = [];
+            products.map(product => {
+                p.push(product.dataValues);
+            })
+            obj.productDetail = p;
+            result.push(obj);
+            console.log(result);
+
+        }))
+        res.status(200).json({ data: result });
+    } catch (err) {
+        res.status(500).json({ err: err })
+    }
+};
+
