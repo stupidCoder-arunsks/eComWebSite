@@ -5,6 +5,7 @@ var cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
+const path = require('path');
 
 const sequelize = require('./util/database');
 const routes = require('./routes/routes');
@@ -29,7 +30,19 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname , '/public')));
 app.use(routes);
+
+app.use((req, res, next) => {
+    // console.log("req url >> ", req.url);
+    // console.log('dirname >> ', __dirname)
+    //  const indexHtmlPath = path.join(__dirname , `../index.html`);
+    // // const indexHtmlPath = path.join(__dirname, `../${req.url}`);
+
+    // console.log('path >>>> ', indexHtmlPath);
+    res.sendFile(path.join(__dirname,`public/index.html`));
+
+})
 
 Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
 User.hasMany(Product);
@@ -42,8 +55,8 @@ Product.belongsToMany(Cart, { through: CartItem });
 
 User.hasMany(Order);
 Order.belongsTo(User);
-Order.belongsToMany(Product,{through:OrderItem});
-Product.belongsToMany(Order,{through:OrderItem});
+Order.belongsToMany(Product, { through: OrderItem });
+Product.belongsToMany(Order, { through: OrderItem });
 
 
 sequelize.sync(
